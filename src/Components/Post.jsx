@@ -1,18 +1,114 @@
-"use client"
+"use client";
+
 import React, { useState } from "react";
-import { FaRegHeart, FaHeart } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
 import { FiMessageCircle, FiSend, FiBookmark } from "react-icons/fi";
 import { BsThreeDots } from "react-icons/bs";
 
-const Post = ({ posts }) => {
+const posts = [
+  {
+    id: 1,
+    username: "sana",
+    profileImage: "/story2.jpg",
+    postImage: "/post1.jpg",
+    likes: 1245,
+    caption: "Beautiful day ✨",
+    comments: 32,
+  },
+  {
+    id: 2,
+    username: "aliya",
+    profileImage: "/story3.jpg",
+    postImage: "/post2.jpg",
+    likes: 987,
+    caption: "Enjoying the little moments ❤️",
+    comments: 21,
+  },
+  {
+    id: 3,
+    username: "ayesha",
+    profileImage: "/story4.jpg",
+    postImage: "/post3.jpg",
+    likes: 2341,
+    caption: "Good vibes only 🌸",
+    comments: 48,
+  },
+  {
+    id: 4,
+    username: "zainab",
+    profileImage: "/story5.jpg",
+    postImage: "/post4.jpg",
+    likes: 1567,
+    caption: "Weekend mood ☀️",
+    comments: 37,
+  },
+  {
+    id: 5,
+    username: "hira",
+    profileImage: "/story6.jpg",
+    postImage: "/post5.jpg",
+    likes: 892,
+    caption: "Just another beautiful day 🌷",
+    comments: 19,
+  },
+  {
+    id: 6,
+    username: "maham",
+    profileImage: "/story7.jpg",
+    postImage: "/post6.jpg",
+    likes: 3210,
+    caption: "Making memories 💫",
+    comments: 64,
+  },
+  {
+    id: 7,
+    username: "laiba",
+    profileImage: "/story8.jpg",
+    postImage: "/post7.jpg",
+    likes: 1764,
+    caption: "Smile, it's a beautiful day 😊",
+    comments: 29,
+  },
+  {
+    id: 8,
+    username: "noor",
+    profileImage: "/story1.jpg",
+    postImage: "/post8.jpg",
+    likes: 2156,
+    caption: "Peace and happiness 🌿",
+    comments: 41,
+  },
+  {
+    id: 9,
+    username: "maria",
+    profileImage: "/story2.jpg",
+    postImage: "/post9.jpg",
+    likes: 1432,
+    caption: "Life is better with good memories 📸",
+    comments: 26,
+  },
+  {
+    id: 10,
+    username: "iqra",
+    profileImage: "/story3.jpg",
+    postImage: "/post10.jpg",
+    likes: 2890,
+    caption: "Keep shining ✨",
+    comments: 53,
+  },
+];
+
+const Post = () => {
   const [likedPosts, setLikedPosts] = useState([]);
 
   const handleLike = (id) => {
-    setLikedPosts((prev) =>
-      prev.includes(id)
-        ? prev.filter((postId) => postId !== id)
-        : [...prev, id]
-    );
+    setLikedPosts((prev) => {
+      if (prev.includes(id)) {
+        return prev.filter((postId) => postId !== id);
+      }
+
+      return [...prev, id];
+    });
   };
 
   return (
@@ -52,17 +148,14 @@ const Post = ({ posts }) => {
             {/* ACTION ICONS */}
             <div className="flex items-center justify-between mt-3">
               <div className="flex items-center gap-4">
+
                 {/* LIKE */}
                 <button
                   type="button"
                   onClick={() => handleLike(post.id)}
                   className="focus:outline-none"
                 >
-                  {isLiked ? (
-                    <FaHeart className="text-2xl cursor-pointer text-red-500" />
-                  ) : (
-                    <FaRegHeart className="text-2xl cursor-pointer text-black hover:scale-110" />
-                  )}
+                  <FaRegHeart className="text-2xl cursor-pointer hover:scale-110" />
                 </button>
 
                 {/* COMMENT */}
